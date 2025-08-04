@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Febri Aditya | AppSheet Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pixel-dark: #1a1a2e;
+            --pixel-darker: #16213e;
+            --pixel-border: #0f3460;
+            --pixel-accent: #533483;
+            --pixel-highlight: #e94560;
+            --pixel-text: #f8f8f8;
+        }
+        
+        body {
+            font-family: 'VT323', monospace;
+            background-color: var(--pixel-dark);
+            color: var(--pixel-text);
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
+        
+        .pixel-bg {
+            background-color: var(--pixel-dark);
+            background-image: 
+                linear-gradient(var(--pixel-darker) 1px, transparent 1px),
+                linear-gradient(90deg, var(--pixel-darker) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .pixel-card {
+            background-color: var(--pixel-darker);
+            border: 4px solid var(--pixel-border);
+            border-radius: 0;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pixel-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pixel-highlight), var(--pixel-accent));
+        }
+        
+        .pixel-title {
+            font-family: 'Press Start 2P', cursive;
+            color: var(--pixel-text);
+            text-shadow: 3px 3px 0 var(--pixel-highlight);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .pixel-heading {
+            font-family: 'Press Start 2P', cursive;
+            color: var(--pixel-text);
+            text-shadow: 5px 5px 0 var(--pixel-highlight);
+            letter-spacing: 2px;
+        }
+        
+        .pixel-subheading {
+            font-family: 'Press Start 2P', cursive;
+            color: #ffd700;
+            text-shadow: 3px 3px 0 var(--pixel-highlight);
+            letter-spacing: 1px;
+        }
+        
+        .pixel-text {
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+        }
+        
+        .pixel-button {
+            background-color: var(--pixel-highlight);
+            border: 3px solid var(--pixel-text);
+            color: var(--pixel-text);
+            font-family: 'Press Start 2P', cursive;
+            padding: 0.8rem 1.5rem;
+            text-transform: uppercase;
+            box-shadow: 5px 5px 0 rgba(0,0,0,0.3);
+            transition: all 0.1s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pixel-button:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+        }
+        
+        .pixel-button-outline {
+            background-color: transparent;
+            border: 3px solid var(--pixel-highlight);
+            color: var(--pixel-highlight);
+        }
+        
+        .pixel-nav {
+            background-color: var(--pixel-darker);
+            border-bottom: 4px solid var(--pixel-highlight);
+        }
+        
+        .pixel-nav-link {
+            position: relative;
+            color: var(--pixel-text);
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.8rem;
+        }
+        
+        .pixel-nav-link:hover {
+            color: var(--pixel-highlight);
+        }
+        
+        .pixel-nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--pixel-highlight);
+            transition: width 0.3s ease;
+        }
+        
+        .pixel-nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .pixel-hero {
+            background: linear-gradient(135deg, var(--pixel-accent) 0%, var(--pixel-highlight) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pixel-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        
+        .pixel-avatar {
+            border: 4px solid var(--pixel-text);
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.3);
+        }
+        
+        .pixel-skill {
+            margin-bottom: 1.5rem;
+        }
+        
+        .pixel-skill-name {
+            font-family: 'VT323', monospace;
+            color: var(--pixel-text);
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+        }
+        
+        .pixel-bar-bg {
+            height: 16px;
+            background-color: var(--pixel-border);
+            border: 2px solid var(--pixel-accent);
+            position: relative;
+        }
+        
+        .pixel-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--pixel-highlight), var(--pixel-accent));
+            position: relative;
+            box-shadow: inset 0 0 8px rgba(255,255,255,0.3);
+        }
+        
+        .pixel-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(transparent, rgba(255,255,255,0.2), transparent);
+        }
+        
+        .pixel-icon {
+            color: var(--pixel-highlight);
+            margin-right: 0.8rem;
+        }
+        
+        .pixel-tool {
+            background-color: var(--pixel-border);
+            border: 2px solid var(--pixel-accent);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .pixel-tool:hover {
+            transform: translateY(-5px);
+            border-color: var(--pixel-highlight);
+            box-shadow: 0 5px 0 rgba(233, 69, 96, 0.5);
+        }
+        
+        .pixel-tool-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pixel-tool-label {
+            font-family: 'VT323', monospace;
+            color: var(--pixel-text);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        .pixel-project-card {
+            background-color: var(--pixel-darker);
+            border: 4px solid var(--pixel-border);
+            transition: all 0.3s;
+        }
+        
+        .pixel-project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--pixel-highlight);
+            box-shadow: 0 10px 0 rgba(233, 69, 96, 0.3);
+        }
+        
+        .pixel-project-title {
+            font-family: 'Press Start 2P', cursive;
+            color: var(--pixel-text);
+            font-size: 1rem;
+        }
+        
+        .pixel-tag {
+            background-color: var(--pixel-border);
+            color: var(--pixel-text);
+            font-family: 'VT323', monospace;
+            font-size: 0.9rem;
+            padding: 0.2rem 0.6rem;
+            border: 2px solid var(--pixel-accent);
+        }
+        
+        .pixel-client-logo {
+            filter: grayscale(100%) contrast(0.5);
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .pixel-client-logo:hover {
+            filter: grayscale(0) contrast(1);
+            opacity: 1;
+        }
+        
+        .pixel-testimonial {
+            background-color: var(--pixel-darker);
+            border: 4px solid var(--pixel-border);
+        }
+        
+        .pixel-form-input {
+            background-color: var(--pixel-darker);
+            border: 3px solid var(--pixel-border);
+            color: var(--pixel-text);
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+        }
+        
+        .pixel-form-input:focus {
+            outline: none;
+            border-color: var(--pixel-highlight);
+        }
+        
+        .pixel-footer {
+            background-color: var(--pixel-darker);
+            border-top: 4px solid var(--pixel-highlight);
+        }
+        
+        .pixel-blink {
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .pixel-typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--pixel-highlight);
+            white-space: nowrap;
+            animation: 
+                typing 3.5s steps(40, end),
+                blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--pixel-highlight) }
+        }
+    </style>
+</head>
+<body class="pixel-bg">
+
+    <nav class="fixed w-full pixel-nav z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <a href="#home" class="pixel-heading text-xl flex items-center">
+                        <span class="bg-tech-blue text-white p-1 mr-2">
+                            <i class="fas fa-gamepad"></i>
+                        </span>
+                        FEBRI_ADITYA
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="pixel-nav-link">HOME</a>
+                    <a href="#about" class="pixel-nav-link">ABOUT</a>
+                    <a href="#skills" class="pixel-nav-link">SKILLS</a>
+                    <a href="#projects" class="pixel-nav-link">PROJECTS</a>
+                    <a href="#clients" class="pixel-nav-link">CLIENTS</a>
+                    <a href="#contact" class="pixel-nav-link">CONTACT</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 py-2 px-4 border-b-2 border-pixel-highlight">
+            <a href="#home" class="block py-2 text-white hover:text-pixel-highlight transition">HOME</a>
+            <a href="#about" class="block py-2 text-white hover:text-pixel-highlight transition">ABOUT</a>
+            <a href="#skills" class="block py-2 text-white hover:text-pixel-highlight transition">SKILLS</a>
+            <a href="#projects" class="block py-2 text-white hover:text-pixel-highlight transition">PROJECTS</a>
+            <a href="#clients" class="block py-2 text-white hover:text-pixel-highlight transition">CLIENTS</a>
+            <a href="#contact" class="block py-2 text-white hover:text-pixel-highlight transition">CONTACT</a>
+        </div>
+    </nav>
+
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 pixel-hero text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <span class="inline-block bg-black/20 text-pixel-highlight font-medium px-3 py-1 mb-4 border-2 border-white">
+                        <i class="fas fa-bolt mr-2"></i>APPSHEET DEVELOPER
+                    </span>
+                    <h1 class="pixel-heading text-4xl md:text-5xl mb-4">HI, I'M <span class="text-yellow-300">FEBRI ADITYA</span></h1>
+                    <h2 class="pixel-subheading text-2xl md:text-3xl mb-6">NO-CODE BUSINESS SOLUTIONS</h2>
+                    <p class="pixel-text text-xl mb-8 opacity-90 max-w-lg">
+                        >_ I build powerful, no-code business applications that streamline operations and boost productivity.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#projects" class="pixel-button">
+                            VIEW WORK <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#contact" class="pixel-button pixel-button-outline">
+                            CONTACT <i class="fas fa-paper-plane ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80 pixel-avatar overflow-hidden">
+                        <img src="WhatsApp Image 2024-12-05 at 13.21.55.jpeg" alt="Foto Febri Aditya" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-16 bg-gray-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="pixel-heading text-3xl text-center mb-12">ABOUT <span class="text-yellow-300">ME</span></h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="w-48 h-48 md:w-64 md:h-64 pixel-avatar overflow-hidden">
+                        <img src="WhatsApp Image 2025-08-02 at 22.19.41.jpeg" alt="Foto Profil Febri Aditya" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="pixel-subheading text-2xl mb-4">WHO AM I?</h3>
+                    <p class="pixel-text text-xl mb-6">
+                        >_ I'm Febri Aditya, a passionate AppSheet Developer with expertise in creating custom business applications without writing code. 
+                    </p>
+                    <p class="pixel-text text-xl mb-6">
+                        >_ I specialize in transforming complex business processes into simple, intuitive apps that drive efficiency and productivity.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="pixel-card p-3">
+                            <div class="flex items-center">
+                                <div class="pixel-icon w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-user-tag"></i>
+                                </div>
+                                <div>
+                                    <span class="pixel-text text-sm">NAME</span>
+                                    <p class="pixel-text text-xl">Febri Aditya</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pixel-card p-3">
+                            <div class="flex items-center">
+                                <div class="pixel-icon w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <span class="pixel-text text-sm">EMAIL</span>
+                                    <p class="pixel-text text-xl">s.besaarr@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pixel-card p-3">
+                            <div class="flex items-center">
+                                <div class="pixel-icon w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <span class="pixel-text text-sm">LOCATION</span>
+                                    <p class="pixel-text text-xl">Indonesia</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pixel-card p-3">
+                            <div class="flex items-center">
+                                <div class="pixel-icon w-8 h-8 rounded-full flex items-center justify-center mr-3">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div>
+                                    <span class="pixel-text text-sm">POSITION</span>
+                                    <p class="pixel-text text-xl">Data Supervisor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="pixel-button inline-flex items-center">
+                        <i class="fas fa-download mr-2"></i> DOWNLOAD CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-16 bg-gray-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="pixel-heading text-3xl text-center mb-12">MY <span class="text-yellow-300">SKILLS</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Technical Skills -->
+                <div class="pixel-card p-6">
+                    <h3 class="pixel-title flex items-center">
+                        <i class="fas fa-code pixel-icon"></i> TECHNICAL SKILLS
+                    </h3>
+                    <div class="space-y-6">
+                        <!-- AppSheet Development -->
+                        <div class="pixel-skill">
+                            <div class="pixel-skill-name">
+                                <span>APP SHEET DEV</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="pixel-bar-bg">
+                                <div class="pixel-bar-fill" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Google Workspace Integration -->
+                        <div class="pixel-skill">
+                            <div class="pixel-skill-name">
+                                <span>GOOGLE WORKSPACE</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="pixel-bar-bg">
+                                <div class="pixel-bar-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Workflow Automation -->
+                        <div class="pixel-skill">
+                            <div class="pixel-skill-name">
+                                <span>WORKFLOW AUTO</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="pixel-bar-bg">
+                                <div class="pixel-bar-fill" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Data Analysis -->
+                        <div class="pixel-skill">
+                            <div class="pixel-skill-name">
+                                <span>DATA ANALYSIS</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="pixel-bar-bg">
+                                <div class="pixel-bar-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professional Skills -->
+                <div class="pixel-card p-6">
+                    <h3 class="pixel-title flex items-center">
+                        <i class="fas fa-user-tie pixel-icon"></i> PRO SKILLS
+                    </h3>
+                    <div class="space-y-6">
+                        <!-- Business Process Analysis -->
+                        <div class="pixel-skill">
+                            <div class="pixel-skill-name">
+                                <span>BUSINESS ANALYSIS</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="pixel-bar-bg">
+                                <div class="pixel-bar-fill" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- UI/UX Design -->
+                        <div class="pixel-skill">
+                            <div class="pixel-skill-name">
+                                <span>UI/UX DESIGN</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="pixel-bar-bg">
+                                <div class="pixel-bar-fill" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project Management -->
+                        <div class="pixel-skill">
+                            <div class="pixel-skill-name">
+                                <span>PROJECT MGMT</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="pixel-bar-bg">
+                                <div class="pixel-bar-fill" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Client Communication -->
+                        <div class="pixel-skill">
+                            <div class="pixel-skill-name">
+                                <span>CLIENT COMMS</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="pixel-bar-bg">
+                                <div class="pixel-bar-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 class="pixel-title text-center mb-8">TOOLS & TECH</h3>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="pixel-tool">
+                    <div class="pixel-tool-icon text-red-400">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="pixel-tool-label">APPSHEET</div>
+                </div>
+                <div class="pixel-tool">
+                    <div class="pixel-tool-icon text-blue-400">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <div class="pixel-tool-label">GOOGLE</div>
+                </div>
+                <div class="pixel-tool">
+                    <div class="pixel-tool-icon text-yellow-400">
+                        <i class="fas fa-table"></i>
+                    </div>
+                    <div class="pixel-tool-label">SHEETS</div>
+                </div>
+                <div class="pixel-tool">
+                    <div class="pixel-tool-icon text-yellow-300">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <div class="pixel-tool-label">JS</div>
+                </div>
+                <div class="pixel-tool">
+                    <div class="pixel-tool-icon text-green-400">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="pixel-tool-label">N8N</div>
+                </div>
+                <div class="pixel-tool">
+                    <div class="pixel-tool-icon text-blue-300">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="pixel-tool-label">CLOUD</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-16 bg-gray-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="pixel-heading text-3xl text-center mb-4">MY <span class="text-yellow-300">PROJECTS</span></h2>
+            <p class="pixel-text text-xl text-center mb-12 max-w-2xl mx-auto">
+                >_ Here are some of my recent AppSheet projects that helped businesses streamline their operations.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="pixel-project-card p-6">
+                    <div class="h-48 bg-gradient-to-br from-blue-900/50 to-purple-900/50 flex items-center justify-center">
+                        <i class="fas fa-mobile-alt text-6xl text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="pixel-project-title mb-2">SALES ORDER APPS</h3>
+                        <p class="pixel-text mb-4">
+                            >_ Sales tracking with live stock data and dashboard for analysis.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="pixel-tag">APPSHEET</span>
+                            <span class="pixel-tag">GOOGLE SHEETS</span>
+                            <span class="pixel-tag">LOOKER STUDIO</span>
+                            <span class="pixel-tag">AUTOMATION</span>
+                        </div>
+                        <a href="https://s.id/DataOrder2025" class="pixel-text text-blue-400 hover:text-blue-300 flex items-center group">
+                            VIEW DETAILS <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pixel-project-card p-6">
+                    <div class="h-48 bg-gradient-to-br from-blue-800/50 to-blue-900/50 flex items-center justify-center">
+                        <i class="fas fa-clipboard-check text-6xl text-blue-300"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="pixel-project-title mb-2">VISIT APPS</h3>
+                        <p class="pixel-text mb-4">
+                            >_ Tracking consumer locations and sales leads from the field.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="pixel-tag">APPSHEET</span>
+                            <span class="pixel-tag">MAPS</span>
+                            <span class="pixel-tag">SPREADSHEET</span>
+                        </div>
+                        <a href="https://www.appsheet.com/start/f5578382-64cb-46d1-b102-be5b22dd053a" class="pixel-text text-blue-300 hover:text-blue-200 flex items-center group">
+                            VIEW DETAILS <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pixel-project-card p-6">
+                    <div class="h-48 bg-gradient-to-br from-green-800/50 to-green-900/50 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-6xl text-green-300"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="pixel-project-title mb-2">SALES DASHBOARD</h3>
+                        <p class="pixel-text mb-4">
+                            >_ Real-time sales tracking with automated reports.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="pixel-tag">APPSHEET</span>
+                            <span class="pixel-tag">DATA STUDIO</span>
+                            <span class="pixel-tag">AUTOMATION</span>
+                        </div>
+                        <a href="https://lookerstudio.google.com/u/0/reporting/5987842b-8a0c-4860-9631-d327097d4531/page/p_1zlbgilcmd" class="pixel-text text-green-300 hover:text-green-200 flex items-center group">
+                            VIEW DETAILS <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pixel-project-card p-6">
+                    <div class="h-48 bg-gradient-to-br from-purple-800/50 to-purple-900/50 flex items-center justify-center">
+                        <i class="fas fa-calendar-alt text-6xl text-purple-300"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="pixel-project-title mb-2">EMPLOYEE ABSENCE</h3>
+                        <p class="pixel-text mb-4">
+                            >_ Attendance app integrated with HR and Discord.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="pixel-tag">APPSHEET</span>
+                            <span class="pixel-tag">SPREADSHEET</span>
+                            <span class="pixel-tag">PHOTO CAPTURE</span>
+                            <span class="pixel-tag">DISCORD</span>
+                        </div>
+                        <a href="https://www.appsheet.com/start/79afcd73-aa3d-45e4-a2b3-84032ab25265" class="pixel-text text-purple-300 hover:text-purple-200 flex items-center group">
+                            VIEW DETAILS <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Updated Laundry Apps Card -->
+                <div class="pixel-project-card p-6">
+                    <div class="h-48 bg-gradient-to-br from-yellow-800/50 to-yellow-900/50 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-tshirt text-6xl text-yellow-300 mb-2"></i>
+                            <i class="fas fa-soap text-4xl text-yellow-200"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="pixel-project-title mb-2">LAUNDRY APPS</h3>
+                        <p class="pixel-text mb-4">
+                            >_ Laundry sales recap from receipt to delivery.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="pixel-tag">APPSHEET</span>
+                            <span class="pixel-tag">WORKFLOW</span>
+                            <span class="pixel-tag">TELEGRAM</span>
+                            <span class="pixel-tag">NOTIFICATIONS</span>
+                        </div>
+                        <a href="#" class="pixel-text text-yellow-300 hover:text-yellow-200 flex items-center group">
+                            VIEW DETAILS <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Updated Workout Log Card -->
+                <div class="pixel-project-card p-6">
+                    <div class="h-48 bg-gradient-to-br from-red-800/50 to-red-900/50 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-dumbbell text-6xl text-red-300 mb-2"></i>
+                            <i class="fas fa-fire-alt text-4xl text-red-200"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="pixel-project-title mb-2">WORKOUT LOG</h3>
+                        <p class="pixel-text mb-4">
+                            >_ Exercise monitoring and calorie analysis.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="pixel-tag">APPSHEET</span>
+                            <span class="pixel-tag">NOTIFICATIONS</span>
+                            <span class="pixel-tag">DASHBOARD</span>
+                        </div>
+                        <a href="https://www.appsheet.com/start/7d0447ae-4a1b-445a-92b9-422afdc25b35" class="pixel-text text-red-300 hover:text-red-200 flex items-center group">
+                            VIEW DETAILS <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="pixel-button inline-flex items-center">
+                    VIEW ALL PROJECTS <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="clients" class="py-16 bg-gray-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="pixel-heading text-3xl text-center mb-12">MY <span class="text-yellow-300">CLIENTS</span></h2>
+            <p class="pixel-text text-xl text-center mb-12 max-w-2xl mx-auto">
+                >_ I've worked with these awesome companies:
+            </p>
+            <div class="flex flex-wrap justify-center items-center gap-8">
+                <div class="flex justify-center">
+                    <img src="LOGO-PERPUSNAS.svg" alt="Logo Perpusnas" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="images.jpg" alt="Yasui Japan" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="Logo_ANRI.png" alt="Logo ANRI" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="images.png" alt="Logo SN Trading" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="images (2).png" alt="Logo PUPR" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="LARI-Sportswear-Logo-24-1.png" alt="Logo LARI" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="aedifexvc_logo.jpg" alt="Logo Aedifex" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="bc17d1f354346bee53b0ddcc263ac3b7.jpg" alt="Logo Almegatex" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="DPD_RI_insignia.png" alt="Logo DPD RI" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="Astra_Infra.svg" alt="Logo Astra Infra" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="unnamed (4).jpg" alt="Logo Warganet Life" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="images (1).jpg" alt="Logo Pesantren" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="Dirgantara_Indonesia_logo.jpeg" alt="Logo DI" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="images (3).png" alt="Logo JI" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="images (2).jpg" alt="Logo Nasya" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="images (4).png" alt="Logo BE" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+                <div class="flex justify-center">
+                    <img src="images (5).png" alt="Logo TM" class="h-12 lg:h-14 pixel-client-logo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="py-16 bg-gray-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="pixel-heading text-3xl text-center mb-12">CLIENT <span class="text-yellow-300">TESTIMONIALS</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="pixel-testimonial p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-pixel-highlight/20 flex items-center justify-center mr-4 text-pixel-highlight">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4 class="pixel-text text-xl font-bold">JOHN SMITH</h4>
+                            <p class="pixel-text text-sm">CEO, RETAIL COMPANY</p>
+                        </div>
+                    </div>
+                    <p class="pixel-text italic">
+                        "Febri transformed our inventory management with his AppSheet solution. What used to take hours now takes minutes."
+                    </p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                <div class="pixel-testimonial p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-pixel-highlight/20 flex items-center justify-center mr-4 text-pixel-highlight">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div>
+                            <h4 class="pixel-text text-xl font-bold">SARAH JOHNSON</h4>
+                            <p class="pixel-text text-sm">OPS MANAGER</p>
+                        </div>
+                    </div>
+                    <p class="pixel-text italic">
+                        "The field service app Febri developed has revolutionized our operations. Our technicians are more productive."
+                    </p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i><i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 bg-gray-900 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="pixel-heading text-3xl text-center mb-4">GET IN <span class="text-yellow-300">TOUCH</span></h2>
+            <p class="pixel-text text-xl text-center mb-12 max-w-2xl mx-auto">
+                >_ Have a project in mind? Let's talk!
+            </p>
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/2">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="pixel-text block mb-1">YOUR NAME</label>
+                            <input type="text" id="name" class="pixel-form-input w-full px-4 py-3 rounded-none" placeholder="ENTER YOUR NAME">
+                        </div>
+                        <div>
+                            <label for="email" class="pixel-text block mb-1">EMAIL</label>
+                            <input type="email" id="email" class="pixel-form-input w-full px-4 py-3 rounded-none" placeholder="ENTER YOUR EMAIL">
+                        </div>
+                        <div>
+                            <label for="subject" class="pixel-text block mb-1">SUBJECT</label>
+                            <input type="text" id="subject" class="pixel-form-input w-full px-4 py-3 rounded-none" placeholder="WHAT'S THIS ABOUT?">
+                        </div>
+                        <div>
+                            <label for="message" class="pixel-text block mb-1">MESSAGE</label>
+                            <textarea id="message" rows="5" class="pixel-form-input w-full px-4 py-3 rounded-none" placeholder="YOUR MESSAGE HERE..."></textarea>
+                        </div>
+                        <button type="submit" class="pixel-button w-full">
+                            SEND MESSAGE <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="pixel-card p-8 h-full">
+                        <h3 class="pixel-title mb-6">CONTACT INFO</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-pixel-highlight/10 text-pixel-highlight p-3 rounded-none mr-4">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="pixel-text text-lg font-bold">LOCATION</h4>
+                                    <p class="pixel-text">Indonesia</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-pixel-highlight/10 text-pixel-highlight p-3 rounded-none mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="pixel-text text-lg font-bold">EMAIL</h4>
+                                    <p class="pixel-text">s.besaarr@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-pixel-highlight/10 text-pixel-highlight p-3 rounded-none mr-4">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="pixel-text text-lg font-bold">PHONE</h4>
+                                    <p class="pixel-text">+62 831-0087-1291</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-pixel-highlight/10 text-pixel-highlight p-3 rounded-none mr-4">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="pixel-text text-lg font-bold">WORKING HOURS</h4>
+                                    <p class="pixel-text">Everyday, Until Doomsday</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="pixel-title mb-4">FOLLOW ME</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-pixel-highlight/10 text-pixel-highlight w-10 h-10 rounded-none flex items-center justify-center hover:bg-pixel-highlight/20 transition duration-300">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="bg-pixel-highlight/10 text-pixel-highlight w-10 h-10 rounded-none flex items-center justify-center hover:bg-pixel-highlight/20 transition duration-300">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="bg-pixel-highlight/10 text-pixel-highlight w-10 h-10 rounded-none flex items-center justify-center hover:bg-pixel-highlight/20 transition duration-300">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="bg-pixel-highlight/10 text-pixel-highlight w-10 h-10 rounded-none flex items-center justify-center hover:bg-pixel-highlight/20 transition duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pixel-footer py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#" class="pixel-heading text-xl flex items-center">
+                        <span class="bg-pixel-highlight text-white p-1 mr-2">
+                            <i class="fas fa-gamepad"></i>
+                        </span>
+                        FEBRI_ADITYA
+                    </a>
+                    <p class="pixel-text mt-1">APPSHEET DEVELOPER</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="#home" class="pixel-text hover:text-pixel-highlight transition duration-300">HOME</a>
+                    <a href="#about" class="pixel-text hover:text-pixel-highlight transition duration-300">ABOUT</a>
+                    <a href="#skills" class="pixel-text hover:text-pixel-highlight transition duration-300">SKILLS</a>
+                    <a href="#projects" class="pixel-text hover:text-pixel-highlight transition duration-300">PROJECTS</a>
+                    <a href="#contact" class="pixel-text hover:text-pixel-highlight transition duration-300">CONTACT</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="pixel-text text-sm mb-4 md:mb-0">© 2025 FEBRI ADITYA. ALL RIGHTS RESERVED.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="pixel-text text-sm hover:text-pixel-highlight transition duration-300">PRIVACY</a>
+                    <a href="#" class="pixel-text text-sm hover:text-pixel-highlight transition duration-300">TERMS</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+        
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 64,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
