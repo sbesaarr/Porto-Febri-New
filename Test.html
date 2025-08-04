@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portofolio Febri Aditya Putra</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    nav ul {
+      margin: 0;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #dc2743;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover {
+      color: #000;
+    }
+
+    header {
+      background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .photo-container {
+      width: 170px;
+      height: 170px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      padding: 5px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-container img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .section {
+      background: white;
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 900px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #dc2743;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    a {
+      color: #dc2743;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .contact {
+      line-height: 1.6;
+    }
+
+    /* CLIENT FLOATING SECTION */
+    .floating-client {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: white;
+      border-top: 1px solid #ddd;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+      z-index: 9999;
+    }
+
+    .floating-client h2 {
+      text-align: center;
+      margin: 10px 0 5px;
+      font-size: 16px;
+      color: #dc2743;
+    }
+
+    .slider-wrapper {
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    .slider {
+      display: flex;
+      animation: scroll 35s linear infinite;
+      align-items: center;
+    }
+
+    .slider img {
+      height: 50px;
+      margin: 0 25px;
+      transition: transform 0.3s ease;
+    }
+
+    .slider img:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Untuk padding bawah agar konten tak ketutupan client */
+    .bottom-space {
+      height: 120px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#portofolio">Portofolio</a></li>
+  </ul>
+</nav>
+
+<!-- HEADER -->
+<header id="home">
+  <div class="photo-container">
+    <img src="WhatsApp Image 2024-12-05 at 13.21.55.jpeg" alt="Foto Profil Febri Aditya Putra" />
+  </div>
+  <h1>Febri Aditya Putra</h1>
+  <p>AppSheet Specialist</p>
+</header>
+
+<!-- SECTIONS -->
+<div class="section">
+  <h2>Tentang Saya</h2>
+  <p>Pengalaman bekerja telah membentuk saya menjadi pribadi yang bertanggung jawab, pekerja keras, dan cepat dalam mempelajari hal baru. Latar belakang pendidikan di bidang Teknik Komputer dan Jaringan mendorong saya untuk terus tekun dan giat menghadapi tantangan teknologi.</p>
+</div>
+
+<div class="section">
+  <h2>Kontak</h2>
+  <div class="contact">
+    Email: <a href="mailto:s.besaarr@gmail.com">s.besaarr@gmail.com</a><br>
+    WhatsApp: <a href="https://wa.me/6283100871291" target="_blank">0831-0087-1291</a><br>
+    Lokasi: Bandung<br>
+    Tanggal Lahir: 18 Februari 2000<br>
+    Instagram: <a href="https://instagram.com/s_besaarr" target="_blank">@s_besaarr</a>
+  </div>
+</div>
+
+<!-- PORTOFOLIO SECTION -->
+<div class="section" id="portofolio">
+  <h2>Portofolio</h2>
+  <ul>
+    <li><strong>AppSheet Developer – Pesantren Nailul Muna (2023)</strong><br>
+      Sistem absensi, penilaian, cashflow, monitoring wali santri, dan data santri berbasis AppSheet.</li>
+    <li><strong>Spreadsheet Engineer – Warganet Life Official (2024)</strong><br>
+      Template Google Sheet untuk absensi otomatis via Google Form.</li>
+    <li><strong>AppSheet Developer – Astra Infra (2024)</strong><br>
+      Aplikasi input & monitoring proyek, notifikasi, dashboard, dan automasi sistem maintenance.</li>
+    <li><strong>AppSheet Developer – DPD RI (2024)</strong><br>
+      Sistem mapping dan visualisasi jangkauan peserta kegiatan tiap provinsi.</li>
+    <li><strong>AppSheet Developer – Kementerian PUPR (2024)</strong><br>
+      Aplikasi absensi dengan fitur monitoring, data pegawai, dan ekspor data otomatis.</li>
+    <li><strong>AppSheet Developer – CV. Runfellas (2024)</strong><br>
+      Sistem manajemen order, pengiriman, stok, produksi, cashflow, dan invoice email otomatis.</li>
+    <li><strong>IT Support – Perpustakaan Nasional (2024)</strong><br>
+      Aplikasi absensi, pencatatan uang harian, data peserta, kirim barcode/sertifikat, dan website event.</li>
+    <li><strong>Desain – Dapur Cieta (2024)</strong><br>
+      Desain logo perusahaan dengan barcode Linktree.</li>
+    <li><strong>AppSheet Developer & Konsultan – Aedifex (2024)</strong><br>
+      Aplikasi produksi dan template sistem Google Sheet; optimasi alur data perusahaan.</li>
+  </ul>
+</div>
+
+
+<div class="section">
+  <h2>Pendidikan</h2>
+  <p><strong>SMK Guna Dharma Nusantara (2014 - 2017)</strong><br>Teknik Komputer Jaringan</p>
+</div>
+
+<div class="section">
+  <h2>Keahlian</h2>
+  <ul>
+    <li>AppSheet</li>
+    <li>Google Spreadsheet</li>
+    <li>Microsoft Excel & Office</li>
+    <li>Problem Solving & Customer Service</li>
+    <li>Leadership & Teamwork</li>
+    <li>Canva, WordPress</li>
+    <li>Marketplace Analysis</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Organisasi</h2>
+  <ul>
+    <li>Pramuka (2014 - 2017)</li>
+    <li>Karang Taruna (2015 - 2016)</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Prestasi</h2>
+  <p><strong>Best Employee 2023</strong><br>
+    Mengubah sistem data Google Sheet & AppSheet jadi lebih efisien dan rapi.</p>
+</div>
+
+<div class="section">
+  <h2>Sertifikasi</h2>
+  <ul>
+    <li>Spreadsheet Level 1 – Dasar (SUMIF, VLOOKUP, Array) – Geoff Max Footwear</li>
+    <li>Spreadsheet Level 2 – Query lanjutan – Geoff Max Footwear</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Bahasa</h2>
+  <ul>
+    <li>Indonesia – Full Professional Proficiency</li>
+    <li>Inggris – Limited Working Proficiency</li>
+  </ul>
+</div>
+
+<div class="section">
+  <h2>Minat</h2>
+  <ul>
+    <li>Membaca & Mempelajari Hal Baru</li>
+    <li>Anime – One Piece</li>
+    <li>Data, Website, Automasi</li>
+  </ul>
+</div>
+
+<!-- FLOATING CLIENT & MITRA -->
+<div class="floating-client">
+  <h2>Client & Mitra</h2>
+  <div class="slider-wrapper">
+    <div class="slider">
+    <img src="geoffmax.jpg" alt="Geoff Max" />
+    <img src="dpdri.png" alt="DPD RI" />
+    <img src="pupr.jpg" alt="Kementerian PUPR" />
+    <img src="runfellas.png" alt="CV Runfellas" />
+    <img src="perpusnas.svg" alt="Perpusnas" />
+    <img src="astra.jpg" alt="Astra Infra" />
+    <img src="almega.png" alt="Almegatex" />
+    <img src="athletica.jpg" alt="Athletica" />
+    <img src="juraganinternet.png" alt="Juragan Internet" />
+    <img src="nasya.jpg" alt="Nasya Halalfood" />
+    <img src="lari.png" alt="Jersey Lar!" />
+    <img src="yasui.jpg" alt="Yasui Japan" />
+    <!-- Duplikat untuk looping tanpa jeda -->
+    <img src="geoffmax.jpg" alt="Geoff Max" />
+    <img src="dpdri.png" alt="DPD RI" />
+    <img src="pupr.jpg" alt="Kementerian PUPR" />
+    <img src="runfellas.png" alt="CV Runfellas" />
+    <img src="perpusnas.svg" alt="Perpusnas" />
+    <img src="astra.jpg" alt="Astra Infra" />
+    <img src="almega.png" alt="Almegatex" />
+    <img src="athletica.jpg" alt="Athletica" />
+    <img src="juraganinternet.png" alt="Juragan Internet" />
+    <img src="nasya.jpg" alt="Nasya Halalfood" />
+    <img src="lari.png" alt="Jersey Lar!" />
+    <img src="yasui.jpg" alt="Yasui Japan" />
+    <!-- Duplikat untuk looping tanpa jeda -->
+    <img src="geoffmax.jpg" alt="Geoff Max" />
+    <img src="dpdri.png" alt="DPD RI" />
+    <img src="pupr.jpg" alt="Kementerian PUPR" />
+    <img src="runfellas.png" alt="CV Runfellas" />
+    <img src="perpusnas.svg" alt="Perpusnas" />
+    <img src="astra.jpg" alt="Astra Infra" />
+    <img src="almega.png" alt="Almegatex" />
+    <img src="athletica.jpg" alt="Athletica" />
+    <img src="juraganinternet.png" alt="Juragan Internet" />
+    <img src="nasya.jpg" alt="Nasya Halalfood" />
+    <img src="lari.png" alt="Jersey Lar!" />
+    <img src="yasui.jpg" alt="Yasui Japan" />
+  </div>
+</div>
+
+</body>
+</html>
